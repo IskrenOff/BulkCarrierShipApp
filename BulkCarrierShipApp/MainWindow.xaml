@@ -5,21 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BulkCarrierShipApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Bulk Carrier layout" Height="450" Width="800">
     <Grid>
         <Viewbox Stretch="Uniform" Grid.Row="0">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox x:Name="UserInputText"
+           Width="100"
+           Height="10"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           Text="Enter the ship name here"
+           FontSize="7"
+           GotFocus="UserInputText_GotFocus"
+           LostFocus="UserInputText_LostFocus"/>
                 <StackPanel x:Name="ShipPanel" Orientation="Horizontal">
-                    <Image Source="/img/stern.jpg" Margin="0" Height="84" Width="77"/>
+                    <Image Source="/img/stern.jpg" Margin="0" Height="97" Width="93"/>
                     <Image x:Name="MidSection" Source="/img/mid.jpg" Margin="0" Height="100" Width="100"/>
                     <Image Source="/img/bow.jpg" Margin="0" Height="100" Width="150"/>
                 </StackPanel>
             </StackPanel>
         </Viewbox>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="90">
-            <Button Content="+" Click="AddSection" Margin="5" />
-            <Button Content="-" Click="RemoveSection" Margin="5"/>
-            <Button Content="Print" Click="PrintShipLayout" Margin="5"/>
-        </StackPanel>
+        <Canvas HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,0,220,50">
+            <Button Content="+"  Click="AddSection"  Width="30" Height="30" Canvas.Left="0" Canvas.Top="0" FontSize="24" FontFamily="Cascadia Mono SemiBold" FontWeight="Bold" />
+            <Button Content="-" Click="RemoveSection"  Width="30" Height="30" Canvas.Left="40" Canvas.Top="0" FontSize="24" FontFamily="Cascadia Mono"/>
+            <Button Content="Print" Click="PrintShipLayout"  Width="110" Canvas.Left="80" Canvas.Top="0" FontFamily="Cascadia Mono" FontSize="24"/>
+        </Canvas>
     </Grid>
 </Window>
