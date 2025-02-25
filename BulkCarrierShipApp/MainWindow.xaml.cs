@@ -20,4 +20,26 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+    //sdasdasdasdasdasdasdasdddd
+    //sdasdasdasdasdasdasdasdddd
+    //sdasdasdasdasdasdasdasdddd
+    private void AddSection (object sender, RoutedEventArgs e)
+    {
+        Image newSection = new Image
+        {
+            Source = new BitmapImage(new Uri("img/mid.jpg", UriKind.Relative)),
+            Margin = new Thickness(5),
+            Height = 100,
+            Width = 100
+        };
+        ShipPanel.Children.Insert(ShipPanel.Children.Count - 1, newSection);
+    }
+
+    private void RemoveSection(object sender, RoutedEventArgs e)
+    {
+        if (ShipPanel.Children.Count > 3)
+        {
+            ShipPanel.Children.RemoveAt(ShipPanel.Children.Count - 2);
+        }
+    }
 }
