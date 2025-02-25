@@ -20,7 +20,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-    
+    //add section to the ship
     private void AddSection (object sender, RoutedEventArgs e)
     {
         Image newSection = new Image
@@ -32,12 +32,37 @@ public partial class MainWindow : Window
         };
         ShipPanel.Children.Insert(ShipPanel.Children.Count - 1, newSection);
     }
-
+    //remove section from the ship
     private void RemoveSection(object sender, RoutedEventArgs e)
     {
         if (ShipPanel.Children.Count > 3)
         {
             ShipPanel.Children.RemoveAt(ShipPanel.Children.Count - 2);
+        }
+    }
+
+    private void PrintShipLayout(object sender, RoutedEventArgs e) 
+    {
+        StackPanel printPanel = new StackPanel { Orientation = Orientation.Horizontal };
+        foreach (UIElement element in ShipPanel.Children)
+        {
+            if (element is Image)
+            {
+                printPanel.Children.Add(new Image
+                {
+                    Source = ((Image)element).Source,
+                    Margin = ((Image)element).Margin,
+                    Height = ((Image)element).Height,
+                    Width = ((Image)element).Width
+
+                });
+            }
+        }
+
+        PrintDialog printDialog = new PrintDialog();
+        if (printDialog.ShowDialog()==true)
+        {
+            printDialog.PrintVisual(printPanel, "Ship Layout");
         }
     }
 }

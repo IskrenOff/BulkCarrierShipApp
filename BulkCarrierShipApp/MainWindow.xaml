@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Viewbox Stretch="Uniform">
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel x:Name="ShipPanel" Orientation="Horizontal">
                 <Image Source="/img/stern.jpg" Margin="0" Height="84" Width="77"/>
@@ -14,9 +15,10 @@
                 <Image Source="/img/bow.jpg" Margin="0" Height="100" Width="150"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="+" Click="AddSection" Margin="5"/>
+                <Button Content="+" Click="AddSection" Margin="10"/>
                 <Button Content="-" Click="RemoveSection" Margin="5"/>
             </StackPanel>
         </StackPanel>
+        </Viewbox>
     </Grid>
 </Window>
