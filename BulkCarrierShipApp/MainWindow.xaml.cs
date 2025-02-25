@@ -20,15 +20,13 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-    //sdasdasdasdasdasdasdasdddd
-    //sdasdasdasdasdasdasdasdddd
-    //sdasdasdasdasdasdasdasdddd
+    
     private void AddSection (object sender, RoutedEventArgs e)
     {
         Image newSection = new Image
         {
             Source = new BitmapImage(new Uri("img/mid.jpg", UriKind.Relative)),
-            Margin = new Thickness(5),
+            Margin = new Thickness(0),
             Height = 100,
             Width = 100
         };
