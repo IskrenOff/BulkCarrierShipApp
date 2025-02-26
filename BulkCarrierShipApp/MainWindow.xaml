@@ -50,6 +50,7 @@
                 </StackPanel>
             </StackPanel>
         </Viewbox>
+        <Image Source="/img/Odessos.jpg" Height="30" Width="90" Margin="0,0,650,200" />
         <Canvas HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,0,220,50">
             <Button Content="+"  Click="AddSection"  Width="30" Height="30" Canvas.Left="0" Canvas.Top="0" FontSize="24" FontFamily="Cascadia Mono SemiBold" FontWeight="Bold" />
             <Button Content="-" Click="RemoveSection"  Width="30" Height="30" Canvas.Left="40" Canvas.Top="0" FontSize="24" FontFamily="Cascadia Mono"/>

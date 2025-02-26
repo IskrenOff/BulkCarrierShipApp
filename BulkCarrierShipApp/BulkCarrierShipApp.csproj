@@ -11,12 +11,14 @@
   <ItemGroup>
     <None Remove="img\bow.jpg" />
     <None Remove="img\mid.jpg" />
+    <None Remove="img\Odessos.jpg" />
     <None Remove="img\stern.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="img\bow.jpg" />
     <Resource Include="img\mid.jpg" />
+    <Resource Include="img\Odessos.jpg" />
     <Resource Include="img\stern.jpg" />
   </ItemGroup>
 
