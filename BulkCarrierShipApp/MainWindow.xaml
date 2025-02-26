@@ -20,8 +20,33 @@
            LostFocus="UserInputText_LostFocus" TextAlignment="Center"/>
                 <StackPanel x:Name="ShipPanel" Orientation="Horizontal">
                     <Image Source="/img/stern.jpg" Margin="0" Height="97" Width="93"/>
-                    <Image x:Name="MidSection" Source="/img/mid.jpg" Margin="0" Height="100" Width="100"/>
-                    <Image Source="/img/bow.jpg" Margin="0" Height="100" Width="150"/>
+                    <Grid x:Name="MidSection" Margin="0" Height="100" Width="100">
+                        <Image Source="/img/mid.jpg"  Height="100" Width="100"/>
+                        <TextBlock x:Name="MidSectionNumber" Text="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                    <Grid x:Name="BowSection" Margin="1" Height="100" Width="150">
+                        <Image Source="/img/bow.jpg"  Height="100" Width="150"/>
+                        <TextBlock x:Name="BowSectionNumber" Text="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="47,0,0,0">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                    
                 </StackPanel>
             </StackPanel>
         </Viewbox>

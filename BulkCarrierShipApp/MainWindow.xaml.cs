@@ -16,6 +16,7 @@ namespace BulkCarrierShipApp;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private int sectionCount = 2;
     public MainWindow()
     {
         InitializeComponent();
@@ -23,21 +24,38 @@ public partial class MainWindow : Window
     //add section to the ship
     private void AddSection (object sender, RoutedEventArgs e)
     {
-        Image newSection = new Image
+        sectionCount++;
+        Grid newSection = new Grid
         {
-            Source = new BitmapImage(new Uri("img/mid.jpg", UriKind.Relative)),
             Margin = new Thickness(0),
             Height = 100,
             Width = 100
         };
-        ShipPanel.Children.Insert(ShipPanel.Children.Count - 1, newSection);
+        newSection.Children.Add(new Image
+        {
+            Source = new BitmapImage(new Uri("/img/mid.jpg", UriKind.Relative)),
+            Height = 100,
+            Width = 100
+        });
+        newSection.Children.Add(new TextBlock
+        {
+          Text = sectionCount.ToString(),
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+            RenderTransform = new RotateTransform(90),
+            RenderTransformOrigin = new Point(0.5, 0.5),
+            FontSize = 16,
+            Foreground = Brushes.Black
+        });
+        ShipPanel.Children.Insert(1, newSection);
     }
     //remove section from the ship
     private void RemoveSection(object sender, RoutedEventArgs e)
     {
         if (ShipPanel.Children.Count > 3)
         {
-            ShipPanel.Children.RemoveAt(ShipPanel.Children.Count - 2);
+            ShipPanel.Children.RemoveAt(1);
+            sectionCount--;
         }
     }
 
