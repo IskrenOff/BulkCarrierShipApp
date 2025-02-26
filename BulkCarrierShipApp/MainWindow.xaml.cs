@@ -97,7 +97,7 @@ public partial class MainWindow : Window
             printDialog.PrintDocument(idpSource.DocumentPaginator, "Ship Layout Preview");
         }
     }
-
+    
     private void UserInputText_GotFocus(object sender, RoutedEventArgs e)
     {
         TextBox textBox = sender as TextBox;

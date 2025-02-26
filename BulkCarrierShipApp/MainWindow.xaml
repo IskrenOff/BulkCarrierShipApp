@@ -17,7 +17,7 @@
            Text="Enter the ship name here"
            FontSize="7"
            GotFocus="UserInputText_GotFocus"
-           LostFocus="UserInputText_LostFocus"/>
+           LostFocus="UserInputText_LostFocus" TextAlignment="Center"/>
                 <StackPanel x:Name="ShipPanel" Orientation="Horizontal">
                     <Image Source="/img/stern.jpg" Margin="0" Height="97" Width="93"/>
                     <Image x:Name="MidSection" Source="/img/mid.jpg" Margin="0" Height="100" Width="100"/>
