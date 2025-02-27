@@ -61,26 +61,98 @@ public partial class MainWindow : Window
 
     private void PrintShipLayout(object sender, RoutedEventArgs e) 
     {
-        StackPanel printPanel = new StackPanel { Orientation = Orientation.Horizontal };
+        if (ShipPanel.Children.Count == 0)
+        {
+            MessageBox.Show("There is nothing to print.", "Print Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+
+        StackPanel printPanel = new StackPanel { Orientation = Orientation.Horizontal};
         foreach (UIElement element in ShipPanel.Children)
         {
-            if (element is Image)
+            if (element is Grid grid)
+            {
+                Grid newGrid = new Grid();
+
+                foreach (UIElement child in grid.Children)
+                {
+                    if (child is Image image)
+                    {
+                        newGrid.Children.Add(new Image {
+                            Source = image.Source,
+                            Margin = image.Margin,
+                            Height = image.Height,
+                            Width = image.Width
+                        });
+                    }
+                    else if (child is TextBlock textBlock)
+                    {
+                        newGrid.Children.Add(new TextBlock
+                        {
+                            Text = textBlock.Text,
+                            HorizontalAlignment = textBlock.HorizontalAlignment,
+                            VerticalAlignment = textBlock.VerticalAlignment,
+                            FontSize = textBlock.FontSize,
+                            Foreground = textBlock.Foreground,
+                            RenderTransform = textBlock.RenderTransform,
+                            RenderTransformOrigin = textBlock.RenderTransformOrigin,
+                            Margin = textBlock.Margin
+                        });
+                    }
+                }
+                printPanel.Children.Add(newGrid);
+            }
+            else if (element is Image image)
             {
                 printPanel.Children.Add(new Image
                 {
-                    Source = ((Image)element).Source,
-                    Margin = ((Image)element).Margin,
-                    Height = ((Image)element).Height,
-                    Width = ((Image)element).Width
-
+                    Source = image.Source,
+                    Margin = image.Margin,
+                    Height = image.Height,
+                    Width = image.Width
                 });
             }
         }
+        //add static image to the print panel
+        printPanel.Children.Add(new Image
+        {
+            Source = new BitmapImage(new Uri("/img/Odessos.jpg", UriKind.Relative)),
+            Width = 100,
+            Height = 100,
+            HorizontalAlignment = HorizontalAlignment.Right,
+            VerticalAlignment = VerticalAlignment.Top,
+            Margin = new Thickness(10)
+        });
         //print the ship layout
         PrintDialog printDialog = new PrintDialog();
         if (printDialog.ShowDialog()==true)
         {
-            printDialog.PrintVisual(printPanel, "Ship Layout");
+            
+            printDialog.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
+         
+
+            FlowDocument doc = new FlowDocument(new BlockUIContainer(printPanel))
+            {
+                PageWidth = printDialog.PrintableAreaWidth,
+                PageHeight = printDialog.PrintableAreaHeight,
+                PagePadding = new Thickness(50),
+                ColumnWidth = printDialog.MaxPage
+
+            };
+
+            printPanel.Measure(new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+            printPanel.Arrange(new Rect(new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight)));
+            double scale = Math.Min(printDialog.PrintableAreaWidth / printPanel.DesiredSize.Width, printDialog.PrintableAreaHeight / printPanel.DesiredSize.Height);
+            printPanel.LayoutTransform = new ScaleTransform(scale, scale);
+
+
+            double offsetX = (printDialog.PrintableAreaWidth - printPanel.DesiredSize.Width * scale) / 2;
+            double offsetY = (printDialog.PrintableAreaHeight - printPanel.DesiredSize.Height * scale) / 2;
+            printPanel.RenderTransform = new TranslateTransform(offsetX, offsetY);
+
+            doc.Name = "FlowDoc";
+            IDocumentPaginatorSource idpSource = doc;
+            printDialog.PrintDocument(idpSource.DocumentPaginator, "Ship Layout Preview");
         }
     }
 

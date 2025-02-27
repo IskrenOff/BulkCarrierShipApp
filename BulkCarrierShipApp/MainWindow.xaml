@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Bulk Carrier layout" Height="450" Width="800">
     <Grid>
-        <Viewbox Stretch="Uniform" Grid.Row="0">
+        <Viewbox  Stretch="Uniform" Grid.Row="0">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBox x:Name="UserInputText"
            Width="100"
@@ -50,7 +50,7 @@
                 </StackPanel>
             </StackPanel>
         </Viewbox>
-        <Image Source="/img/Odessos.jpg" Height="30" Width="90" Margin="0,0,650,200" />
+        <Image Source="/img/Odessos.jpg" Height="30" Width="90" Margin="0,0,650,250" />
         <Canvas HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,0,220,50">
             <Button Content="+"  Click="AddSection"  Width="30" Height="30" Canvas.Left="0" Canvas.Top="0" FontSize="24" FontFamily="Cascadia Mono SemiBold" FontWeight="Bold" />
             <Button Content="-" Click="RemoveSection"  Width="30" Height="30" Canvas.Left="40" Canvas.Top="0" FontSize="24" FontFamily="Cascadia Mono"/>
