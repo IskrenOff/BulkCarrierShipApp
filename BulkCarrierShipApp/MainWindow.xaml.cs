@@ -20,6 +20,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
     }
     //add section to the ship
     private void AddSection (object sender, RoutedEventArgs e)
@@ -66,6 +67,7 @@ public partial class MainWindow : Window
             MessageBox.Show("There is nothing to print.", "Print Error", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
+        
 
         StackPanel printPanel = new StackPanel { Orientation = Orientation.Horizontal};
         foreach (UIElement element in ShipPanel.Children)
@@ -124,7 +126,8 @@ public partial class MainWindow : Window
             Margin = new Thickness(10)
         });
         //print the ship layout
-        PrintDialog printDialog = new PrintDialog();
+        PrintDialog printDialog = new PrintDialog();      
+
         if (printDialog.ShowDialog()==true)
         {
             
